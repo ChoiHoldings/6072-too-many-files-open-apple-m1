@@ -1,0 +1,45 @@
+apiVersion: skaffold/v2beta19
+kind: Config
+build:
+  local:
+    useBuildkit: true
+    push: false
+  artifacts:
+    - image: api.dev
+      context: .
+      sync:
+        manual:
+          - src: 'apps/api/src/**/*'
+            dest: '/usr/src'
+          - src: 'libs/shared/*/src/**/*'
+            dest: '/usr/src'
+      docker:
+        dockerfile: apps/api/Dockerfile
+        target: dev
+    - image: web.dev
+      context: .
+      sync:
+        manual:
+          - src: 'apps/web/src/**/*'
+            dest: '/usr/src'
+          - src: 'libs/shared/*/src/**/*'
+            dest: '/usr/src'
+      docker:
+        dockerfile: apps/web/Dockerfile
+        target: dev
+deploy:
+  kubeContext: docker-desktop
+  helm:
+    releases:
+      - name: nginx-ingress
+        repo: https://kubernetes.github.io/ingress-nginx
+        remoteChart: ingress-nginx
+        version: 3.34.0
+        # https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml
+        overrides:
+          controller:
+            admissionWebhooks:
+              enabled: false
+  kubectl:
+    manifests:
+      - tools/k8s/dev/*.yaml

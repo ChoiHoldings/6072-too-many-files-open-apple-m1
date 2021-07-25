@@ -1,0 +1,47 @@
+{
+  "npmScope": "choi",
+  "affected": {
+    "defaultBase": "main"
+  },
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "projects": {
+    "api": {
+      "tags": ["scope:api"]
+    },
+    "api-e2e": {
+      "tags": ["scope:api-e2e"]
+    },
+    "web": {
+      "tags": ["scope:web"]
+    },
+    "web-e2e": {
+      "tags": ["scope:web-e2e"],
+      "implicitDependencies": ["web"]
+    },
+    "shared-feature-health": {
+      "tags": ["scope:shared"]
+    }
+  }
+}

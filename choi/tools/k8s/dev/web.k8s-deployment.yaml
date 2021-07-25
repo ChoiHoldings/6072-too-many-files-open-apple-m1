@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  labels:
+    component: web
+    tier: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: web
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        component: web
+        tier: frontend
+    spec:
+      containers:
+        - name: web
+          image: web.dev
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: web-config

@@ -1,0 +1,16 @@
+# Which API version to use
+# https://matthewpalmer.net/kubernetes-app-developer/articles/kubernetes-apiversion-definition-guide.html
+apiVersion: v1
+kind: Service
+metadata:
+  name: api
+  labels:
+    component: api
+    tier: backend
+spec:
+  selector:
+    component: api
+    tier: backend
+  ports:
+    - port: 3000
+      targetPort: 3000

@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "EditorConfig.EditorConfig",
+    "ms-azuretools.vscode-docker",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "redhat.vscode-yaml",
+    "streetsidesoftware.code-spell-checker",
+    "firsttris.vscode-jest-runner",
+    "octref.vetur"
+  ]
+}

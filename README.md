@@ -1,1 +1,3 @@
-# 6072-too-many-files-open-apple-m1
+All code is placed inside a given workspace. Please choose one of the available workspaces:
+
+* [choi](choi/) 

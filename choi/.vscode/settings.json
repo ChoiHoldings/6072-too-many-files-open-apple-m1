@@ -1,0 +1,5 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "yaml.format.enable": false,
+  "editor.formatOnSave": true
+}

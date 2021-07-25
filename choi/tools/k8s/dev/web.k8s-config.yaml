@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: web-config
+  labels:
+    tier: frontend
+data:
+  DL_ORG_RUN_ENV: 'dev'

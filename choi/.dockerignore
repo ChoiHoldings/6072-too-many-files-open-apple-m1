@@ -1,0 +1,12 @@
+# Ignore all by default
+*
+
+# Except these
+!apps/
+!libs/
+!**/tsconfig*.json
+!**/jest.*.js
+!**/package*.json
+!**/tslint.json
+!workspace.json
+!nx.json
